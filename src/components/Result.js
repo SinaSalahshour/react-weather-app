@@ -1,4 +1,13 @@
 import React from "react";
+import {
+  FaCloud,
+  FaCloudShowersHeavy,
+  FaCloudRain,
+  FaBolt,
+  FaSun,
+  FaSmog,
+  FaSnowflake
+} from "react-icons/fa";
 
 const Result = ({
   name,
@@ -8,7 +17,27 @@ const Result = ({
   humidity,
   wind,
   feelsLike,
+  main,
+  desc
 }) => {
+  let weatherIcon = null;
+
+  if (main === "Thunderstorm") {
+    weatherIcon = <FaBolt />;
+  } else if (main === "Drizzle") {
+    weatherIcon = <FaCloudRain />;
+  } else if (main === "Rain") {
+    weatherIcon = <FaCloudShowersHeavy />;
+  } else if (main === "Snow") {
+    weatherIcon = <FaSnowflake />;
+  } else if (main === "Clear") {
+    weatherIcon = <FaSun />;
+  } else if (main === "Clouds") {
+    weatherIcon = <FaCloud />;
+  } else {
+    weatherIcon = <FaSmog />;
+  }
+
   return (
     <div className="result-div">
       <h1>City: {name}</h1>
@@ -18,6 +47,9 @@ const Result = ({
       <h1>Humidity: {humidity}%</h1>
       <h1>Wind Speed: {wind}mph</h1>
       <h1>Feels Like: {feelsLike}</h1>
+      <h1>{main}</h1>
+      <h1>{desc}</h1>
+      <div>{weatherIcon}</div>
     </div>
   );
 };

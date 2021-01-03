@@ -11,7 +11,7 @@ const SearchBar = ({getSearch, search, updateSearch}) => {
           onChange={updateSearch}
         />
         <button className="search-button" type="submit">
-          Search
+          Search City
         </button>
       </form>
     </div>
