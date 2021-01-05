@@ -6,11 +6,12 @@ import {
   FaBolt,
   FaSun,
   FaSmog,
-  FaSnowflake
+  FaSnowflake,
 } from "react-icons/fa";
 
 const Result = ({
   name,
+  country,
   temp,
   lowTemp,
   highTemp,
@@ -18,37 +19,40 @@ const Result = ({
   wind,
   feelsLike,
   main,
-  desc
+  desc,
 }) => {
   let weatherIcon = null;
 
   if (main === "Thunderstorm") {
-    weatherIcon = <FaBolt />;
+    weatherIcon = <FaBolt className="weather-icon" />;
   } else if (main === "Drizzle") {
-    weatherIcon = <FaCloudRain />;
+    weatherIcon = <FaCloudRain className="weather-icon" />;
   } else if (main === "Rain") {
-    weatherIcon = <FaCloudShowersHeavy />;
+    weatherIcon = <FaCloudShowersHeavy className="weather-icon" />;
   } else if (main === "Snow") {
-    weatherIcon = <FaSnowflake />;
+    weatherIcon = <FaSnowflake className="weather-icon" />;
   } else if (main === "Clear") {
-    weatherIcon = <FaSun />;
+    weatherIcon = <FaSun className="weather-icon" />;
   } else if (main === "Clouds") {
-    weatherIcon = <FaCloud />;
+    weatherIcon = <FaCloud className="weather-icon" />;
   } else {
-    weatherIcon = <FaSmog />;
+    weatherIcon = <FaSmog className="weather-icon" />;
   }
 
   return (
     <div className="result-div">
-      <h1>City: {name}</h1>
-      <h1>Temperature: {temp}</h1>
-      <h1>Lowest Temperature: {lowTemp}</h1>
-      <h1>Highest Temperature: {highTemp}</h1>
-      <h1>Humidity: {humidity}%</h1>
-      <h1>Wind Speed: {wind}mph</h1>
-      <h1>Feels Like: {feelsLike}</h1>
-      <h1>{main}</h1>
-      <h1>{desc}</h1>
+      <div className="weather-result-div">
+        <div className="weather-main">
+          <div className="weather-icon">{weatherIcon}</div>
+          <div className="weather-temp-desc">
+            <h1 className="weather-temperature">{temp}</h1>
+            <div className="weather-description">{main}</div>
+          </div>
+        </div>
+        <div className="weather-stats">
+          <div className="weather-stats-grid"></div>
+        </div>
+      </div>
       <div>{weatherIcon}</div>
     </div>
   );

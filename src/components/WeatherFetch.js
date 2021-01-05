@@ -3,11 +3,13 @@ import React, { useEffect, useState } from "react";
 import { KEY } from "./api";
 import Result from "./Result";
 import SearchBar from "./SearchBar";
+import "./WeatherFetch.css";
 
 const WeatherFetch = () => {
   const [query, setQuery] = useState("london");
   const [search, setSearch] = useState("");
-  const [name, setName] = useState("")
+  const [name, setName] = useState("");
+  const [country, setCountry] = useState("");
   const [temp, setTemp] = useState("");
   const [highTemp, setHighTemp] = useState("");
   const [lowTemp, setLowTemp] = useState("");
@@ -24,7 +26,8 @@ const WeatherFetch = () => {
         `https://api.openweathermap.org/data/2.5/weather?q=${query}&units=metric&appid=${key}`
       );
       const data = await response.json();
-      setName(data.name)
+      setName(data.name);
+      setCountry(data.sys.country);
       setTemp(Math.floor(data.main.temp));
       setHighTemp(Math.floor(data.main.temp_max));
       setLowTemp(Math.floor(data.main.temp_min));
@@ -49,7 +52,7 @@ const WeatherFetch = () => {
   };
 
   return (
-    <>
+    <div className="weather-app-main">
       <SearchBar
         getSearch={getSearch}
         search={search}
@@ -57,6 +60,7 @@ const WeatherFetch = () => {
       />
       <Result
         name={name}
+        country={country}
         temp={temp}
         highTemp={highTemp}
         lowTemp={lowTemp}
@@ -66,7 +70,7 @@ const WeatherFetch = () => {
         main={main}
         desc={desc}
       />
-    </>
+    </div>
   );
 };
 

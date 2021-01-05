@@ -1,6 +1,6 @@
 import React from "react";
 
-const SearchBar = ({getSearch, search, updateSearch}) => {
+const SearchBar = ({ getSearch, search, updateSearch }) => {
   return (
     <div>
       <form onSubmit={getSearch} className="search-form">
