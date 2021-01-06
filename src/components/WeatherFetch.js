@@ -15,7 +15,8 @@ const WeatherFetch = () => {
   const [lowTemp, setLowTemp] = useState("");
   const [wind, setWind] = useState("");
   const [humidity, setHumidity] = useState("");
-  const [feelsLike, setFeelsLike] = useState("");
+  const [sunrise, setSunrise] = useState("");
+  const [sunset, setSunset] = useState("");
   const [main, setMain] = useState("");
   const [desc, setDesc] = useState("");
 
@@ -26,6 +27,7 @@ const WeatherFetch = () => {
         `https://api.openweathermap.org/data/2.5/weather?q=${query}&units=metric&appid=${key}`
       );
       const data = await response.json();
+
       setName(data.name);
       setCountry(data.sys.country);
       setTemp(Math.floor(data.main.temp));
@@ -33,7 +35,12 @@ const WeatherFetch = () => {
       setLowTemp(Math.floor(data.main.temp_min));
       setWind(data.wind.speed);
       setHumidity(data.main.humidity);
-      setFeelsLike(Math.floor(data.main.feels_like));
+      setSunrise(
+        new Date(data.sys.sunrise * 1000).toLocaleTimeString().slice(0, 5)
+      );
+      setSunset(
+        new Date(data.sys.sunset * 1000).toLocaleTimeString().slice(0, 5)
+      );
       setMain(data.weather[0].main);
       setDesc(data.weather[0].description);
       console.log(data);
@@ -52,7 +59,7 @@ const WeatherFetch = () => {
   };
 
   return (
-    <div className="weather-app-main">
+    <div className="weather-app-main container">
       <SearchBar
         getSearch={getSearch}
         search={search}
@@ -66,7 +73,8 @@ const WeatherFetch = () => {
         lowTemp={lowTemp}
         humidity={humidity}
         wind={wind}
-        feelsLike={feelsLike}
+        sunrise={sunrise}
+        sunset={sunset}
         main={main}
         desc={desc}
       />

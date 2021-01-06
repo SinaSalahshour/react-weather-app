@@ -9,6 +9,8 @@ import {
   FaSnowflake,
 } from "react-icons/fa";
 
+import "./Result.css";
+
 const Result = ({
   name,
   country,
@@ -17,43 +19,61 @@ const Result = ({
   highTemp,
   humidity,
   wind,
-  feelsLike,
+  sunrise,
+  sunset,
   main,
   desc,
 }) => {
   let weatherIcon = null;
 
   if (main === "Thunderstorm") {
-    weatherIcon = <FaBolt className="weather-icon" />;
+    weatherIcon = <FaBolt size={180} />;
   } else if (main === "Drizzle") {
-    weatherIcon = <FaCloudRain className="weather-icon" />;
+    weatherIcon = <FaCloudRain size={180} />;
   } else if (main === "Rain") {
-    weatherIcon = <FaCloudShowersHeavy className="weather-icon" />;
+    weatherIcon = <FaCloudShowersHeavy size={180} />;
   } else if (main === "Snow") {
-    weatherIcon = <FaSnowflake className="weather-icon" />;
+    weatherIcon = <FaSnowflake size={180} />;
   } else if (main === "Clear") {
-    weatherIcon = <FaSun className="weather-icon" />;
+    weatherIcon = <FaSun size={180} />;
   } else if (main === "Clouds") {
-    weatherIcon = <FaCloud className="weather-icon" />;
+    weatherIcon = <FaCloud size={180} />;
   } else {
-    weatherIcon = <FaSmog className="weather-icon" />;
+    weatherIcon = <FaSmog size={180} />;
   }
 
   return (
-    <div className="result-div">
-      <div className="weather-result-div">
-        <div className="weather-main">
-          <div className="weather-icon">{weatherIcon}</div>
-          <div className="weather-temp-desc">
-            <h1 className="weather-temperature">{temp}</h1>
-            <div className="weather-description">{main}</div>
-          </div>
+    <div className="weather-result-div">
+      <div className="weather-main">
+        <div className="weather-city">
+          {name}, {country}
         </div>
-        <div className="weather-stats">
-          <div className="weather-stats-grid"></div>
+        <div className="weather-icon">{weatherIcon}</div>
+        <div className="weather-temperature">
+          {temp}&deg; {main}
         </div>
       </div>
-      <div>{weatherIcon}</div>
+      <div className="weather-stats">
+        <div className="weather-stats-elements high-low">
+          <div className="stat-element">&#9650; {highTemp}&deg;</div>
+          <hr />
+          <div className="stat-element">&#9660; {lowTemp}&deg;</div>
+        </div>
+        <div className="weather-stats-elements humid-wind">
+          <div className="stat-name-up">Humidity</div>
+          <div className="stat-element">{humidity}%</div>
+          <hr />
+          <div className="stat-element">{wind}mph</div>
+          <div className="stat-name-down">Wind</div>
+        </div>
+        <div className="weather-stats-elements sunrise-sunset">
+          <div className="stat-name-up">Sunrise</div>
+          <div className="stat-element">{sunrise}</div>
+          <hr />
+          <div className="stat-element">{sunset}</div>
+          <div className="stat-name-down">Sunset</div>
+        </div>
+      </div>
     </div>
   );
 };
