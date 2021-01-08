@@ -1,4 +1,7 @@
 import React from "react";
+import { FaSearch } from "react-icons/fa";
+
+import "./SearchBar.css";
 
 const SearchBar = ({ getSearch, search, updateSearch }) => {
   return (
@@ -8,11 +11,10 @@ const SearchBar = ({ getSearch, search, updateSearch }) => {
           className="search-bar"
           type="text"
           value={search}
+          placeholder="Enter City"
           onChange={updateSearch}
         />
-        <button className="search-button" type="submit">
-          Search City
-        </button>
+          <FaSearch className="search-icon" />
       </form>
     </div>
   );

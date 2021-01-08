@@ -45,12 +45,10 @@ const Result = ({
   return (
     <div className="weather-result-div">
       <div className="weather-main">
-        <div className="weather-city">
-          {name}, {country}
-        </div>
         <div className="weather-icon">{weatherIcon}</div>
-        <div className="weather-temperature">
-          {temp}&deg; {main}
+        <div className="main-and-temp">
+          <div className="weather-temperature">{temp}&deg;</div>
+          <div className="weather-desc">{desc}</div>
         </div>
       </div>
       <div className="weather-stats">

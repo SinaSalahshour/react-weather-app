@@ -29,3 +29,14 @@ body,
   justify-content: flex-start;
   align-items: center;
 }
+
+.weather-name {
+  color: rgb(255, 255, 255);
+  display: block;
+  font-weight: 600;
+  font-size: 30px;
+  text-align: left;
+  padding: 5px 0px;
+  width: 90vw;
+  margin: 1em 0;
+}

@@ -65,6 +65,7 @@ const WeatherFetch = () => {
         search={search}
         updateSearch={updateSearch}
       />
+      <div className="weather-name">{name}, {country}</div>
       <Result
         name={name}
         country={country}
