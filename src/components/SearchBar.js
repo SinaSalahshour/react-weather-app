@@ -5,7 +5,7 @@ import "./SearchBar.css";
 
 const SearchBar = ({ getSearch, search, updateSearch }) => {
   return (
-    <div>
+    <div className="search-div">
       <form onSubmit={getSearch} className="search-form">
         <input
           className="search-bar"
