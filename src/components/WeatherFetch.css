@@ -40,3 +40,7 @@ body,
   width: 90vw;
   margin: 1em 0;
 }
+
+.forecast-div {
+  display: flex;
+}

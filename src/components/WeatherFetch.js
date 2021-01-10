@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import { KEY } from "./api";
+import ForecastResult from "./ForecastResult";
 import Result from "./Result";
 import SearchBar from "./SearchBar";
 import "./WeatherFetch.css";
@@ -19,6 +20,7 @@ const WeatherFetch = () => {
   const [sunset, setSunset] = useState("");
   const [main, setMain] = useState("");
   const [desc, setDesc] = useState("");
+  const [dailyForecast, setDailyForecast] = useState([]);
 
   useEffect(() => {
     const getWeather = async () => {
@@ -48,6 +50,22 @@ const WeatherFetch = () => {
     getWeather();
   }, [query]);
 
+  useEffect(() => {
+    const getForecast = async () => {
+      const key = KEY;
+      const response = await fetch(
+        `https://api.openweathermap.org/data/2.5/forecast?q=${query}&units=metric&appid=${key}`
+      );
+      const data = await response.json();
+      const dailyData = data.list.filter((reading) => {
+        return reading.dt_txt.includes("18:00:00");
+      }).slice(1);
+      setDailyForecast(dailyData);
+      console.log(dailyData);
+    };
+    getForecast();
+  }, [query]);
+
   const updateSearch = (e) => {
     setSearch(e.target.value);
   };
@@ -58,6 +76,12 @@ const WeatherFetch = () => {
     setSearch("");
   };
 
+  const forecastMap = () => {
+    return dailyForecast.map((reading, index) => (
+      <ForecastResult reading={reading} key={index} />
+    ));
+  };
+
   return (
     <div className="weather-app-main container">
       <SearchBar
@@ -65,7 +89,9 @@ const WeatherFetch = () => {
         search={search}
         updateSearch={updateSearch}
       />
-      <div className="weather-name">{name}, {country}</div>
+      <div className="weather-name">
+        {name}, {country}
+      </div>
       <Result
         name={name}
         country={country}
@@ -79,6 +105,7 @@ const WeatherFetch = () => {
         main={main}
         desc={desc}
       />
+      <div className="forecast-div">{forecastMap()}</div>
     </div>
   );
 };
