@@ -42,5 +42,18 @@ body,
 }
 
 .forecast-div {
+  width: 85vw;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.weather-fetch-line {
+  background-color: #ffffff;
+  border: 0 none;
+  color: #ffffff;
+  height: 1px;
+  max-width: 75vw;
+  width: 100%;
+  margin: 20px 0;
 }

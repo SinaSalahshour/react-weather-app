@@ -60,6 +60,7 @@ const WeatherFetch = () => {
       const dailyData = data.list.filter((reading) => {
         return reading.dt_txt.includes("18:00:00");
       }).slice(1);
+
       setDailyForecast(dailyData);
       console.log(dailyData);
     };
@@ -105,6 +106,7 @@ const WeatherFetch = () => {
         main={main}
         desc={desc}
       />
+      <hr className="weather-fetch-line" />
       <div className="forecast-div">{forecastMap()}</div>
     </div>
   );

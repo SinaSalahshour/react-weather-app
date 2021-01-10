@@ -54,20 +54,20 @@ const Result = ({
       <div className="weather-stats">
         <div className="weather-stats-elements high-low">
           <div className="stat-element">&#9650; {highTemp}&deg;</div>
-          <hr />
+          <hr className="stat-element-line" />
           <div className="stat-element">&#9660; {lowTemp}&deg;</div>
         </div>
         <div className="weather-stats-elements humid-wind">
           <div className="stat-name-up">Humidity</div>
           <div className="stat-element">{humidity}%</div>
-          <hr />
+          <hr className="stat-element-line" />
           <div className="stat-element">{wind}mph</div>
           <div className="stat-name-down">Wind</div>
         </div>
         <div className="weather-stats-elements sunrise-sunset">
           <div className="stat-name-up">Sunrise</div>
           <div className="stat-element">{sunrise}</div>
-          <hr />
+          <hr className="stat-element-line" />
           <div className="stat-element">{sunset}</div>
           <div className="stat-name-down">Sunset</div>
         </div>

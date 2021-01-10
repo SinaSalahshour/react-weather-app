@@ -3,6 +3,7 @@
   justify-content: space-between;
   align-items: flex-start;
   width: 90vw;
+  margin-bottom: 2em;
 }
 
 .weather-main {
@@ -62,7 +63,7 @@
   border-radius: 15px;
 }
 
-hr {
+.stat-element-line {
   background-color: #ffffff;
   border: 0 none;
   color: #ffffff;
