@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 
 import { KEY } from "./api";
 import ForecastResult from "./ForecastResult";
+import Loading from "./Loading";
+import NotFound from "./NotFound";
 import Result from "./Result";
 import SearchBar from "./SearchBar";
 import "./WeatherFetch.css";
@@ -21,6 +23,7 @@ const WeatherFetch = () => {
   const [main, setMain] = useState("");
   const [desc, setDesc] = useState("");
   const [dailyForecast, setDailyForecast] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const getWeather = async () => {
@@ -57,9 +60,12 @@ const WeatherFetch = () => {
         `https://api.openweathermap.org/data/2.5/forecast?q=${query}&units=metric&appid=${key}`
       );
       const data = await response.json();
-      const dailyData = data.list.filter((reading) => {
-        return reading.dt_txt.includes("18:00:00");
-      }).slice(1);
+      setLoading(false);
+      const dailyData = data.list
+        .filter((reading) => {
+          return reading.dt_txt.includes("18:00:00");
+        })
+        .slice(1);
 
       setDailyForecast(dailyData);
       console.log(dailyData);
@@ -90,24 +96,30 @@ const WeatherFetch = () => {
         search={search}
         updateSearch={updateSearch}
       />
-      <div className="weather-name">
-        {name}, {country}
-      </div>
-      <Result
-        name={name}
-        country={country}
-        temp={temp}
-        highTemp={highTemp}
-        lowTemp={lowTemp}
-        humidity={humidity}
-        wind={wind}
-        sunrise={sunrise}
-        sunset={sunset}
-        main={main}
-        desc={desc}
-      />
-      <hr className="weather-fetch-line" />
-      <div className="forecast-div">{forecastMap()}</div>
+      {loading ? (<Loading />) : name ? (
+        <>
+          <div className="weather-name">
+            {name}, {country}
+          </div>
+          <Result
+            name={name}
+            country={country}
+            temp={temp}
+            highTemp={highTemp}
+            lowTemp={lowTemp}
+            humidity={humidity}
+            wind={wind}
+            sunrise={sunrise}
+            sunset={sunset}
+            main={main}
+            desc={desc}
+          />
+          <hr className="weather-fetch-line" />
+          <div className="forecast-div">{forecastMap()}</div>
+        </>
+      ) : (
+        <NotFound />
+      )}
     </div>
   );
 };
