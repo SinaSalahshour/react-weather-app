@@ -27,19 +27,19 @@ const Result = ({
   let weatherIcon = null;
 
   if (main === "Thunderstorm") {
-    weatherIcon = <FaBolt size={180} />;
+    weatherIcon = <FaBolt />;
   } else if (main === "Drizzle") {
-    weatherIcon = <FaCloudRain size={180} />;
+    weatherIcon = <FaCloudRain />;
   } else if (main === "Rain") {
-    weatherIcon = <FaCloudShowersHeavy size={180} />;
+    weatherIcon = <FaCloudShowersHeavy />;
   } else if (main === "Snow") {
-    weatherIcon = <FaSnowflake size={180} />;
+    weatherIcon = <FaSnowflake />;
   } else if (main === "Clear") {
-    weatherIcon = <FaSun size={180} />;
+    weatherIcon = <FaSun />;
   } else if (main === "Clouds") {
-    weatherIcon = <FaCloud size={180} />;
+    weatherIcon = <FaCloud />;
   } else {
-    weatherIcon = <FaSmog size={180} />;
+    weatherIcon = <FaSmog />;
   }
 
   return (
@@ -61,7 +61,7 @@ const Result = ({
           <div className="stat-name-up">Humidity</div>
           <div className="stat-element">{humidity}%</div>
           <hr className="stat-element-line" />
-          <div className="stat-element">{wind}mph</div>
+          <div className="stat-element">{wind}<span className="mile-per-hour">mph</span></div>
           <div className="stat-name-down">Wind</div>
         </div>
         <div className="weather-stats-elements sunrise-sunset">
