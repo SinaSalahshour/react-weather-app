@@ -20,19 +20,19 @@ const ForecastResult = ({ reading }) => {
   let weatherIcon = null;
 
   if (reading.weather[0].main === "Thunderstorm") {
-    weatherIcon = <FaBolt size={60} className="forecast-icon" />;
+    weatherIcon = <FaBolt className="forecast-icon" />;
   } else if (reading.weather[0].main === "Drizzle") {
-    weatherIcon = <FaCloudRain size={60} className="forecast-icon" />;
+    weatherIcon = <FaCloudRain className="forecast-icon" />;
   } else if (reading.weather[0].main === "Rain") {
-    weatherIcon = <FaCloudShowersHeavy size={60} className="forecast-icon" />;
+    weatherIcon = <FaCloudShowersHeavy className="forecast-icon" />;
   } else if (reading.weather[0].main === "Snow") {
-    weatherIcon = <FaSnowflake size={60} className="forecast-icon" />;
+    weatherIcon = <FaSnowflake className="forecast-icon" />;
   } else if (reading.weather[0].main === "Clear") {
-    weatherIcon = <FaSun size={60} className="forecast-icon" />;
+    weatherIcon = <FaSun className="forecast-icon" />;
   } else if (reading.weather[0].main === "Clouds") {
-    weatherIcon = <FaCloud size={60} className="forecast-icon" />;
+    weatherIcon = <FaCloud className="forecast-icon" />;
   } else {
-    weatherIcon = <FaSmog size={60} className="forecast-icon" />;
+    weatherIcon = <FaSmog className="forecast-icon" />;
   }
 
   return (

@@ -4,7 +4,6 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   border-radius: 15px;
   padding: .8em 0;
@@ -21,7 +20,8 @@
 }
 
 .forecast-icon {
-  margin: .4em 0;
+  margin: .1em 0;
+  font-size: 60px;
 }
 
 .forecast-temp {
@@ -33,4 +33,12 @@
 .forecast-desc {
   font-size: 1.2rem;
   margin-bottom: .2em;
+}
+
+@media screen and (max-width: 900px) {
+  .daily-forecast-card {
+    min-width: 42vw;
+    margin: 0 .4em;
+    min-height: 320px;
+  }
 }

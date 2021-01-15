@@ -142,6 +142,10 @@
 }
 
 @media screen and (max-width: 500px) {
+  .weather-result-div {
+    width: 96vw;
+  }
+
   .stat-element {
     font-size: 24px;
   }
