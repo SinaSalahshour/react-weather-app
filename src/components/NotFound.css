@@ -1,0 +1,11 @@
+.not-found-div {
+  box-sizing: border-box;
+  background-color: rgba(255, 255, 255, 0.25);
+  margin: 5em 1em;
+  padding: 3em 3em;
+  border-radius: 15px;
+}
+
+.not-found-info {
+  font-size: 1.6rem;
+}

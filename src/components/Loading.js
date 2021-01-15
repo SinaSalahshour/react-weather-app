@@ -1,12 +1,14 @@
-import React from 'react'
-import {AiOutlineLoading3Quarters} from 'react-icons/ai';
+import React from "react";
+import "./Loading.css";
 
 const Loading = () => {
-    return (
-        <div>
-            <AiOutlineLoading3Quarters />
-        </div>
-    )
-}
+  return (
+    <div class="lds-ring">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  );
+};
 
-export default Loading
+export default Loading;

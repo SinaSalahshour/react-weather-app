@@ -4,8 +4,8 @@ import "./NotFound.css";
 
 const NotFound = () => {
   return (
-    <div>
-      <h1>error</h1>
+    <div className="not-found-div">
+      <div className="not-found-info">Sorry, I couldn't find the city you were looking for</div>
     </div>
   );
 };
