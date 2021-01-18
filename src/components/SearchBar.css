@@ -41,3 +41,26 @@
   font-size: 14px;
   color: #c5c5c5;
 }
+
+@media screen and (max-width: 600px) {
+  .search-bar {
+    max-width: 80%;
+  }
+
+  .search-icon {
+    position: absolute;
+    left: 40px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .search-icon {
+    left: 30px;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .search-icon {
+    left: 26px;
+  }
+}

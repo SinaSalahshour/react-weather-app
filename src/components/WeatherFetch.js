@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import moment from "moment";
 
 import { KEY } from "./api";
 import ForecastResult from "./ForecastResult";
@@ -41,10 +42,10 @@ const WeatherFetch = () => {
       setWind(data.wind.speed);
       setHumidity(data.main.humidity);
       setSunrise(
-        new Date(data.sys.sunrise * 1000).toLocaleTimeString().slice(0, 5)
+        moment.unix(data.sys.sunrise)
       );
       setSunset(
-        new Date(data.sys.sunset * 1000).toLocaleTimeString().slice(0, 5)
+        moment.unix(data.sys.sunset)
       );
       setMain(data.weather[0].main);
       setDesc(data.weather[0].description);
@@ -109,8 +110,8 @@ const WeatherFetch = () => {
             lowTemp={lowTemp}
             humidity={humidity}
             wind={wind}
-            sunrise={sunrise}
-            sunset={sunset}
+            sunrise={moment(sunrise).format("HH:mm")}
+            sunset={moment(sunset).format("HH:mm")}
             main={main}
             desc={desc}
           />
